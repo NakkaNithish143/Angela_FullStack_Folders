@@ -1,0 +1,91 @@
+//1
+Introduction to version control and git
+
+you can create different savepoints while development of project calling them as different version,if you screw up your code,
+you can roll back to previous version
+
+//2
+//Version control using Git and the Command Line
+
+We are inside our Story directory,it is called as working directory.
+git init //creates a .git folder
+Initialized empty Git repository in D:/Web Development/Story/.git/
+
+But we cannot find a .git folder inside Story folder,it is a secret folder
+We can see it in terminal using 
+ls -a command
+In order to start tracking the changes inside files,for ex:chapter1.txt,we need to add this file to 
+staging area.
+
+git status 
+The files which are inside working directory,but not in staging area are shown in red.
+git add filename //To add file into staging area
+git commit -m "Complete chapter1" //adds a save point,as a convention we write messages in present tense
+git log  //you can see what commits you have made
+//instead of adding each file to staging area using  git add filename
+git add .  //we can add all the files inside the working directory into staging area using this command 
+(HEAD -> master) //It means the current version/state we are in
+
+We have three areas here
+Working Directory,Staging area,Local Repository
+
+//Staging area is used because we may not want to track all the files.
+//If we are happy with the file,then we will commit it to the local repository(.git) given a version
+name through the commit message
+//Let say if we messed up the chapter3 and saved it by mistake.
+git status //it shows if there are any changes that are not commited.
+//If you just want to see the changes that are accidentally made
+git diff filename //It shows the part that was deleted from the file in red
+git checkout filename //rollback to the previous state of the file of last savepoint
+//In this video we have only talked about how to work with local repositories.
+
+//3
+//Github Remote Repositories,creating repositories in someone else computer/server
+//Exporting a local repository to git hub repository
+//Create a new repository in github without readme file
+git remote add origin url //It will create the remote repository
+(origin is simply the name of our remote,we can call it anything if we want)
+git push -u origin master //it pushes the local repository to the remote which is the origin here,master
+is the main branch/default branch
+github insights>Network
+//Master branch is the main progress line of commits
+//We can have a local repository and a remote repository in github in parallel
+//We can push our local repository to remote repository using git push -u branch
+ 
+//gitignore
+files that we dont want to add to the github like files DS_Store,files that contains api keys,passwords
+touch .gitignore
+$ git rm --cached -r .  //to remove all files from the staging area
+in the .gitignore file write the filenames as it is with extensions also
+gitignore file has some rules to follow
+#for commenting
+*.txt  //it will add all the files with .txt to .gitignore
+go to github/gitignore repository on github where u can find predefined templates for various projects
+
+//Cloning a remote repository to pull it to your local machine
+git clone url
+
+//Branching and Merging
+If we want to try something in our project that we are not confident of, so instead of commiting it
+to our main branch we can create a side branch(experimental branch),and offcourse we can also work parallerly with our main branch
+If the experimental version is successful we can simply merge it to the main branch with a merge request.
+
+git branch branchname  //to create a new branch
+git branch //to view the branches
+git checkout branchname //to move between the branches
+
+After going to a side branch add files to the staging area
+commit the changes
+
+our local files actually changes as we switch branches
+In order to merge side branch to main/master branch,go to your master branch and type
+git merge sidebranchname
+
+we can also create and merge branches in github itself.
+
+//Forking and pull requests
+clone your repo>work on it locally>git push 
+fork others repo into your github account>clone it>work on it locally>git push>send pull req
+fork makes a copy remotely,while clone makes copy locally.
+
+
